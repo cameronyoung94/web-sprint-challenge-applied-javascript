@@ -35,32 +35,24 @@ axios.get(articleURL)
     }
 })
 
-function createCard (obj){
-    const cardDiv = document.createElement('div')
-    const cardHeadLine = document.createElement('div')
-    const cardAuthor = document.createElement('div')
-    const cardImgDiv = document.createElement('div')
-    const cardImg = document.createElement('img')
-    const cardSpan = document.createElement('span')
-
-    cardAuthor.classList.add("card")
-    cardHeadLine.classList.add("headline")
-    cardAuthor.classList.add("author")
-    cardImgDiv.classList.add("img-container")
-
-    cardHeadLine.textContent = obj.headline 
-    cardImg.src = obj.authorPhoto
-    cardSpan.textContent = obj.authorName
-
-    cardDiv.appendChild(cardHeadLine)
-    cardDiv.appendChild(cardAuthor)
-    cardAuthor.appendChild(cardImg)
-    cardImgDiv.appendChild(cardImg)
-    cardAuthor.appendChild(cardSpan)
-
-    cardDiv.addEventListener('click', () => {
-        console.log(obj.headline)
-    })
-
-    return cardDiv
-}
+const createCard = articleData => {
+    const card = document.createElement('div');
+    const headline = document.createElement('div');
+    const authorContainer = document.createElement('div');
+    const imgContainer = document.createElement('div');
+    const img = document.createElement('img');
+    const authorsName = document.createElement('span');
+    card.classList.add('card');
+    headline.classList.add('headline');
+    authorContainer.classList.add('author');
+    imgContainer.classList.add('img-container');
+    headline.textContent = articleData.headline;
+    img.src = articleData.authorPhoto;
+    authorsName.textContent = articleData.authorName;
+    card.appendChild(headline);
+    card.appendChild(authorContainer);
+    authorContainer.appendChild(imgContainer);
+    imgContainer.appendChild(img);
+    authorContainer.appendChild(authorsName);
+    return card
+  }
